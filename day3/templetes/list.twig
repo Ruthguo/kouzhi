@@ -1,0 +1,32 @@
+{% extends "base.twig" %}  
+  
+{% block title %}user manage system{% endblock %}  
+{% block head %}  
+    {{ parent() }}  
+{% endblock %}  
+{% block content %}  
+    <table border='1'>
+    <tr>
+      {% for userAtrr in users[0] %}  
+        <th>{{ userAtrr }}</th>  
+      {% endfor %}
+      <th>修改</th>
+      <th>删除</th>
+    </tr>
+    
+      {% for user in users[1] %} 
+      <tr> 
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td> 
+        <td>{{ user.sex }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.info }}</td>
+        <td><a href='index.php?id={{user.id}}&method=modifyTo&action=User'>修改</a></td>
+        <td><a href='index.php?id={{user.id}}&method=delTo&action=User'>删除</a></td>
+      </tr>
+       {% endfor %}
+    
+  </table>
+  <br/>
+  <a class="add" href="index.php?action=User&method=add">增加</a>  
+{% endblock %} 
